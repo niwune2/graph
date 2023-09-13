@@ -1,0 +1,40 @@
+body {
+    color: rgb(223, 223, 223);
+    background-color: rgb(30, 30, 30);
+}
+
+header{
+    margin-bottom: 10px;
+}
+
+.divGraph{
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.numbers{
+    width: 60px;
+    height: 400px;
+    overflow-y: scroll;
+    border: 2px solid rgb(0, 141, 166);
+}
+
+.number{
+    margin: 2px;
+    color: red;
+    text-align: center;
+}
+
+.counts{
+    width: 60px;
+    height: 400px;
+    overflow-y: scroll;
+    border: 2px solid rgb(0, 141, 166);
+}
+
+.count{
+    margin: 2px;
+    color: orange;
+    text-align: center;
+}
