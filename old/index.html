@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>myGraph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main3.js" defer></script>
+</head>
+
+<body>
+    <header>myGraph</header>
+    <div class="divGraph">
+        <canvas id="graph"></canvas>
+        <div class="numbers"></div>
+        <div class="counts"></div>
+        <p id="counter"></p>
+    </div>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Example</title>
+    <!-- Chart.jsのCDNを追加 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- グラフを描画するキャンバス要素 -->
+    <canvas id="myChart"></canvas>
+
+    <!-- グラフを描画するスクリプト -->
+    <script>
+        // グラフの描画ロジックをここに書く
+        // グラフのデータ
+        var data = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Sample Data',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // バーの背景色
+                borderColor: 'rgba(75, 192, 192, 1)',     // バーの境界線の色
+                borderWidth: 1                            // バーの境界線の太さ
+            }]
+        };
+
+        // グラフのオプション
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // グラフを描画するキャンバス要素を取得
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // 棒グラフを描画
+        var myChart = new Chart(ctx, {
+            type: 'bar',  // グラフの種類を指定
+            data: data,   // データ
+            options: options // オプション
+        });
+
+    </script>
+</body>
+
+</html>

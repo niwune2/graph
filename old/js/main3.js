@@ -124,7 +124,7 @@ function randomNum(min, max) {
     return num;
 }
 
-let intervalSecond = 1000;//時間間隔を設定
+let intervalSecond = 500;//時間間隔を設定
 
 /* ----------- カウンターリスト ----------- */
 let countNumber = setInterval(() => {//1ずつ増える
