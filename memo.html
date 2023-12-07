@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>example-1-basic</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension bierner.markdown-checkbox */
+.contains-task-list {
+    padding-left: 0;
+}
+
+.contains-task-list li {
+    margin-left: 24px;
+}
+
+.contains-task-list .task-list-item {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.contains-task-list .contains-task-list {
+    padding-left: 20px;
+} 
+/* From extension tsutsu3.markdown-named-codeblocks */
+.named-fence-block {
+  position: relative;
+  padding-top: 2em !important;
+}
+
+.named-fence-filename {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 4px;
+  font-weight: bold;
+  color: #000000;
+  background: #c0c0c0;
+  opacity: 0.6;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <ul>
+<li><a href="#example-1-basic">example-1-basic</a></li>
+<li><a href="#example-2-typing">example-2-typing</a></li>
+<li><a href="#example-3-realtime">example-3-realTime</a></li>
+</ul>
+<h2 id="example-1-basic">example-1-basic</h2>
+<pre><code class="language-js"><span class="hljs-comment">// グラフのデータ</span>
+<span class="hljs-keyword">var</span> data = {
+  <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>],
+  <span class="hljs-attr">datasets</span>: [{
+    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Sample Data&#x27;</span>,
+    <span class="hljs-attr">data</span>: [<span class="hljs-number">12</span>, <span class="hljs-number">19</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>],
+    <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">&#x27;rgba(75, 192, 192, 0.2)&#x27;</span>, <span class="hljs-comment">// バーの背景色</span>
+    <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;rgba(75, 192, 192, 1)&#x27;</span>,     <span class="hljs-comment">// バーの境界線の色</span>
+    <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1</span>                            <span class="hljs-comment">// バーの境界線の太さ</span>
+  }]
+};
+
+<span class="hljs-comment">// グラフのオプション</span>
+<span class="hljs-keyword">var</span> options = {
+  <span class="hljs-attr">scales</span>: {
+    <span class="hljs-attr">y</span>: {
+      <span class="hljs-attr">beginAtZero</span>: <span class="hljs-literal">true</span>
+    }
+  }
+};
+
+<span class="hljs-comment">// グラフを描画するキャンバス要素を取得</span>
+<span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;myChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+
+<span class="hljs-comment">// 棒グラフを描画</span>
+<span class="hljs-keyword">var</span> myChart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,  <span class="hljs-comment">// グラフの種類を指定</span>
+  <span class="hljs-attr">data</span>: data,   <span class="hljs-comment">// データ</span>
+  <span class="hljs-attr">options</span>: options <span class="hljs-comment">// オプション</span>
+});
+
+</code></pre>
+<h2 id="example-2-typing">example-2-typing</h2>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- グラフを描画するキャンバス要素 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;progressChart&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;400&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;200&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;errorChart&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;400&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;200&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+    <span class="hljs-comment">// 進捗のデータ</span>
+    <span class="hljs-keyword">var</span> progressData = {
+      <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Session 1&#x27;</span>, <span class="hljs-string">&#x27;Session 2&#x27;</span>, <span class="hljs-string">&#x27;Session 3&#x27;</span>, <span class="hljs-string">&#x27;Session 4&#x27;</span>],
+      <span class="hljs-attr">datasets</span>: [{
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Typing Speed&#x27;</span>,
+        <span class="hljs-attr">data</span>: [<span class="hljs-number">50</span>, <span class="hljs-number">55</span>, <span class="hljs-number">60</span>, <span class="hljs-number">65</span>], <span class="hljs-comment">// WPM (Words Per Minute)</span>
+        <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;rgba(75, 192, 192, 1)&#x27;</span>,
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attr">fill</span>: <span class="hljs-literal">false</span>
+      }]
+    };
+
+    <span class="hljs-comment">// ミスタイプのデータ</span>
+    <span class="hljs-keyword">var</span> errorData = {
+      <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Session 1&#x27;</span>, <span class="hljs-string">&#x27;Session 2&#x27;</span>, <span class="hljs-string">&#x27;Session 3&#x27;</span>, <span class="hljs-string">&#x27;Session 4&#x27;</span>],
+      <span class="hljs-attr">datasets</span>: [{
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Error Rate&#x27;</span>,
+        <span class="hljs-attr">data</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>], <span class="hljs-comment">// ミスタイプの割合</span>
+        <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">&#x27;rgba(255, 99, 132, 0.2)&#x27;</span>,
+        <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;rgba(255, 99, 132, 1)&#x27;</span>,
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">2</span>
+      }]
+    };
+
+    <span class="hljs-comment">// 進捗のグラフを描画</span>
+    <span class="hljs-keyword">var</span> progressCtx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;progressChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+    <span class="hljs-keyword">var</span> progressChart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(progressCtx, {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;line&#x27;</span>,
+      <span class="hljs-attr">data</span>: progressData,
+      <span class="hljs-attr">options</span>: {
+        <span class="hljs-attr">scales</span>: {
+          <span class="hljs-attr">y</span>: {
+            <span class="hljs-attr">beginAtZero</span>: <span class="hljs-literal">true</span>
+          }
+        }
+      }
+    });
+
+    <span class="hljs-comment">// ミスタイプのグラフを描画</span>
+    <span class="hljs-keyword">var</span> errorCtx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;errorChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+    <span class="hljs-keyword">var</span> errorChart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(errorCtx, {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;pie&#x27;</span>,
+      <span class="hljs-attr">data</span>: errorData
+    });
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="example-3-realtime">example-3-realTime</h2>
+<pre><code class="language-html"> <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;realTimeChart&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;400&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;200&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+    <span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;realTimeChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+
+    <span class="hljs-comment">// 初期データ</span>
+    <span class="hljs-keyword">var</span> initialData = {
+      <span class="hljs-attr">labels</span>: [],
+      <span class="hljs-attr">datasets</span>: [{
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Real-time Data&#x27;</span>,
+        <span class="hljs-attr">data</span>: [],
+        <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;rgba(75, 192, 192, 1)&#x27;</span>,
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attr">fill</span>: <span class="hljs-literal">false</span>
+      }]
+    };
+
+    <span class="hljs-keyword">var</span> options = {
+      <span class="hljs-attr">scales</span>: {
+        <span class="hljs-attr">x</span>: {
+          <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;linear&#x27;</span>,
+          <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>
+        },
+        <span class="hljs-attr">y</span>: {
+          <span class="hljs-attr">beginAtZero</span>: <span class="hljs-literal">true</span>
+        }
+      }
+    };
+
+    <span class="hljs-keyword">var</span> realTimeChart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;line&#x27;</span>,
+      <span class="hljs-attr">data</span>: initialData,
+      <span class="hljs-attr">options</span>: options
+    });
+
+    <span class="hljs-comment">// リアルタイムデータ更新</span>
+    <span class="hljs-built_in">setInterval</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">var</span> newDataPoint = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">100</span>);
+      <span class="hljs-keyword">var</span> newData = {
+        <span class="hljs-attr">x</span>: realTimeChart.<span class="hljs-property">data</span>.<span class="hljs-property">labels</span>.<span class="hljs-property">length</span>,
+        <span class="hljs-attr">y</span>: newDataPoint
+      };
+
+      <span class="hljs-comment">// データ追加</span>
+      realTimeChart.<span class="hljs-property">data</span>.<span class="hljs-property">labels</span>.<span class="hljs-title function_">push</span>(newData.<span class="hljs-property">x</span>);
+      realTimeChart.<span class="hljs-property">data</span>.<span class="hljs-property">datasets</span>[<span class="hljs-number">0</span>].<span class="hljs-property">data</span>.<span class="hljs-title function_">push</span>(newData.<span class="hljs-property">y</span>);
+
+      <span class="hljs-comment">// データ数が一定以上になったら先頭のデータを削除</span>
+      <span class="hljs-keyword">if</span> (realTimeChart.<span class="hljs-property">data</span>.<span class="hljs-property">labels</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">10</span>) {
+        realTimeChart.<span class="hljs-property">data</span>.<span class="hljs-property">labels</span>.<span class="hljs-title function_">shift</span>();
+        realTimeChart.<span class="hljs-property">data</span>.<span class="hljs-property">datasets</span>[<span class="hljs-number">0</span>].<span class="hljs-property">data</span>.<span class="hljs-title function_">shift</span>();
+      }
+
+      <span class="hljs-comment">// グラフの更新</span>
+      realTimeChart.<span class="hljs-title function_">update</span>();
+
+    }, <span class="hljs-number">1000</span>); <span class="hljs-comment">// 1秒ごとに更新</span>
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+
+        
+        
+    </body>
+    </html>
