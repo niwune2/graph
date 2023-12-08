@@ -1,0 +1,14 @@
+{
+  "name": "mygraph",
+  "version": "1.0.0",
+  "description": "グラフのようなものです。 意味はありません。 描画の練習のために作りました。 - 座標(0,0)を再設定する - 線に沿った位置に点を描画する - 縦横の線を描画する - リストを自動的に追加する - スクロールバーを下部に固定する",
+  "main": "chart.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^4.4.1"
+  }
+}

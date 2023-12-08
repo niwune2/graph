@@ -78,18 +78,25 @@ const realTimeLine = new Chart(ctx, {
 
 setInterval(() => {
     const newData1 = {
-        x: realTimeLine.data.labels.length, // これを変更
+        x: realTimeLine.data.labels.length,
         y: random(100, 0)
     };
 
     const newData2 = {
-        x: realTimeLine.data.labels.length + 1, // これを変更
+        x: realTimeLine.data.labels.length,
         y: random(100, 0)
     };
 
     realTimeLine.data.labels.push(newData1.x, newData2.x);
     realTimeLine.data.datasets[0].data.push(newData1.y);
     realTimeLine.data.datasets[1].data.push(newData2.y);
+    /**
+     * `realTimeLine`の`data`プロパティが参照している
+     * `lineData`オブジェクトの`[n]`番目の、
+     * 0~4のデータを格納した`data`配列に、
+     * `push()`メソッドで`newData1(/2)`オブジェクトの`y`プロパティの
+     * 数値を後ろに追加する
+     */
 
     // グラフを更新
     realTimeLine.update();
@@ -97,6 +104,43 @@ setInterval(() => {
 }, 1000);
 
 // 棒グラフ
+const canvasBar = document.getElementById("bar");
+const ctxBar = canvasBar.getContext("2d");
+
+const barData = {
+    labels: [0, 1, 2, 3, 4],
+    datasets: [{
+        label: 'サンプルデータ',
+        data:[],
+        backgroundColor: 'rgba(100,200,200,0.4)',
+        borderColor: 'rgba(100,200,200,1)',
+        borderWidth: 2
+    }]
+};
+
+const barOptions = {
+    scales: {
+        // x: {type :'bar', }
+        y: { beginAtZero: true}
+    }
+};
+
+const realTimeBar = new Chart(ctxBar, {
+    type: 'bar',
+    data: barData,
+    options: barOptions
+});
+
+setInterval(() => {
+    const newData = {
+        x: realTimeBar.data.labels.length,
+        y: random(100,0)
+    };
+
+    realTimeBar.data.labels.push(newData.x);
+    realTimeBar.data.datasets[0].data.push(newData.y);
+    realTimeBar.update();
+}, 1000);
 
 // レーダーチャート
 
